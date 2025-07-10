@@ -89,6 +89,12 @@ elif disease == "Breast Cancer":
         user_input.append(val)
 
     if st.button("Predict"):
+         data = np.array([user_input])
+        scaled = scaler.transform(data)
+        result = model.predict(scaled)[0]
+        st.success("✅ Tumor is Benign" if result == 0 else "⚠️ Tumor is Malignant")
+# to run this use this command in the terminal (streamlit run app.py)
+
         data = np.array([user_input])
         scaled = scaler.transform(data)
         result = model.predict(scaled)[0]
